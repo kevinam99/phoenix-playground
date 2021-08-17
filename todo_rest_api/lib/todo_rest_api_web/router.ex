@@ -27,7 +27,7 @@ defmodule TodoRestApiWeb.Router do
   scope "/api", TodoRestApiWeb do
     pipe_through :api
     post "/", DefaultController, :index
-    post "/addTodo", AddTodoController
+    post "/addTodo", AddTodoController, :index
   end
 
   # Enables LiveDashboard only for development
