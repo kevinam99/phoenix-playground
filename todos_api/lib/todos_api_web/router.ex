@@ -7,6 +7,10 @@ defmodule TodosApiWeb.Router do
 
   scope "/api", TodosApiWeb do
     pipe_through :api
+    get "/", ListTodos, :index
+    post "/addTodo", AddTodo, :index
+    post "/deleteTodo/:title", DeleteTodo, :index
+    post "/updateTodo/:title", UpdateTodo, :index
   end
 
   # Enables LiveDashboard only for development
