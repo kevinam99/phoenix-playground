@@ -18,6 +18,8 @@ defmodule ClickCounterWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+
+    live "/countClicks", CountClicks
   end
 
   # Other scopes may use custom stacks.
