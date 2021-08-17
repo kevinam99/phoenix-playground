@@ -18,12 +18,17 @@ defmodule TodoRestApiWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/todos", TodosLive
+
+    # get "/getRoute", GetLive
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TodoRestApiWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", TodoRestApiWeb do
+    pipe_through :api
+    post "/", DefaultController, :index
+    post "/addTodo", AddTodoController
+  end
 
   # Enables LiveDashboard only for development
   #
