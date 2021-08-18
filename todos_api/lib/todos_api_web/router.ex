@@ -14,6 +14,15 @@ defmodule TodosApiWeb.Router do
     post "/updateTodo/:title", UpdateTodo, :index
   end
 
+  pipeline :browser do
+    plug(:accepts, ["html"])
+  end
+  
+  scope "/", TodosApiWeb do
+    pipe_through :browser
+    get "/", DefaultController, :index
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
