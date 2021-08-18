@@ -14,4 +14,8 @@ defmodule TodosApiWeb.DeleteTodo do
       error -> send_resp(conn, 500, error)
     end
   end
+
+  def no_id_received(conn, _params) do
+    send_resp(conn, 401, "{error: NO_ID_RECEIVED}")
+  end
 end

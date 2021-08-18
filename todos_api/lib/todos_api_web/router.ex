@@ -11,7 +11,9 @@ defmodule TodosApiWeb.Router do
     # get "/", ListTodos, :index
     post "/addTodo", AddTodo, :index
     post "/deleteTodo/:id", DeleteTodo, :index
-    post "/updateTodo/", UpdateTodo, :index
+    post "/deleteTodo/", DeleteTodo, :no_id_received
+    post "/updateTodo/:id", UpdateTodo, :index
+    post "/updateTodo/", UpdateTodo, :no_id_received
   end
 
   pipeline :browser do
