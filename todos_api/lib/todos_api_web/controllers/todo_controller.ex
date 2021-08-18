@@ -12,6 +12,8 @@ defmodule TodosApiWeb.TodoController do
   end
 
   def create(conn, %{"todo" => todo_params}) do
+    IO.inspect(todo_params)
+
     with {:ok, %Todo{} = todo} <- Todos.create_todo(todo_params) do
       conn
       |> put_status(:created)

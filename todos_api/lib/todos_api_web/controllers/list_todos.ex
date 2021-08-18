@@ -1,13 +1,11 @@
 defmodule TodosApiWeb.ListTodos do
   use TodosApiWeb, :controller
-  alias TodosApi.Repo
+
+  alias TodosApi.Todos
   alias TodosApi.Todos.Todo
+
   def index(conn, _params) do
-    IO.puts "Todos:"
-    Repo.all(Todo)
-    |> Enum.each(fn todo ->
-      IO.puts todo["title"]
-    end)
-    text conn, "Hello from GET /"
+    todos = Todos.list_todos()
+    render(conn, "index.json", todos: todos)
   end
 end

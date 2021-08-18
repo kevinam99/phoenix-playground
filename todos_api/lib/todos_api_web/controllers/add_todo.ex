@@ -1,7 +1,20 @@
 defmodule TodosApiWeb.AddTodo do
   use TodosApiWeb, :controller
 
-  def index(conn, _params) do
-    text conn, "hello from POST/"
+  alias TodosApi.Todos
+  # database context
+  alias TodosApi.Todos.Todo
+
+  action_fallback TodosApiWeb.FallbackController
+
+  def index(conn, %{"todo" => todo_params}) do
+    IO.puts("Hello from POST /api/addTodo")
+
+    with {:ok, %Todo{} = todo} <- Todos.create_todo(todo_params) do
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", Routes.todo_path(conn, :show, todo))
+      |> render("show.json", todo: todo)
+    end
   end
 end

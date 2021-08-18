@@ -7,17 +7,17 @@ defmodule TodosApiWeb.Router do
 
   scope "/api", TodosApiWeb do
     pipe_through :api
-    resources "/todos", TodoController, except: [:new, :edit]
-    get "/", ListTodos, :index
+    resources "/", TodoController, except: [:new, :edit]
+    # get "/", ListTodos, :index
     post "/addTodo", AddTodo, :index
-    post "/deleteTodo/:title", DeleteTodo, :index
-    post "/updateTodo/:title", UpdateTodo, :index
+    post "/deleteTodo/:id", DeleteTodo, :index
+    post "/updateTodo/", UpdateTodo, :index
   end
 
   pipeline :browser do
     plug(:accepts, ["html"])
   end
-  
+
   scope "/", TodosApiWeb do
     pipe_through :browser
     get "/", DefaultController, :index
