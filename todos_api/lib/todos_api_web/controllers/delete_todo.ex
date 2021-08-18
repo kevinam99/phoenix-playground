@@ -9,7 +9,9 @@ defmodule TodosApiWeb.DeleteTodo do
     todo = Todos.get_todo!(id)
 
     with {:ok, %Todo{}} <- Todos.delete_todo(todo) do
-      send_resp(conn, :no_content, "")
+      send_resp(conn, 200, "todo deleted")
+    else
+      error -> send_resp(conn, 500, error)
     end
   end
 end
