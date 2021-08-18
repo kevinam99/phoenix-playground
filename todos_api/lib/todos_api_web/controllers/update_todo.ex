@@ -16,6 +16,8 @@ defmodule TodosApiWeb.UpdateTodo do
   end
 
   def no_id_received(conn, _params) do
-    send_resp(conn, 401, "{error: NO_PARAMS_RECEIVED}")
+    conn
+    |> put_resp_content_type("text/json")
+    |> send_resp(400, "{error: ALL_PARAMS_NOT_RECEIVED}")
   end
 end

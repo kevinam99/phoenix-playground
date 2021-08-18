@@ -16,6 +16,8 @@ defmodule TodosApiWeb.DeleteTodo do
   end
 
   def no_id_received(conn, _params) do
-    send_resp(conn, 401, "{error: NO_ID_RECEIVED}")
+    conn
+    |> put_resp_content_type("text/json")
+    |> send_resp(400, "{error: NO_ID_RECEIVED}")
   end
 end
