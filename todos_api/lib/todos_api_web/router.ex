@@ -9,10 +9,10 @@ defmodule TodosApiWeb.Router do
     pipe_through :api
     resources "/", TodoController, except: [:new, :edit]
     # get "/", ListTodos, :index
-    post "/addTodo", AddTodo, :index
-    post "/deleteTodo/:id", DeleteTodo, :index
+    post "/addTodo", AddTodo, :create
+    post "/deleteTodo/:id", DeleteTodo, :delete
     post "/deleteTodo/", DeleteTodo, :no_id_received
-    post "/updateTodo/:id", UpdateTodo, :index
+    post "/updateTodo/:id", UpdateTodo, :update
     post "/updateTodo/", UpdateTodo, :no_id_received
   end
 

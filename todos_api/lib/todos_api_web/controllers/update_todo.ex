@@ -5,7 +5,7 @@ defmodule TodosApiWeb.UpdateTodo do
 
   action_fallback TodosApiWeb.FallbackController
 
-  def index(conn, %{"id" => id, "todo" => todo_params}) do
+  def update(conn, %{"id" => id, "todo" => todo_params}) do
     todo = Todos.get_todo!(id)
 
     with {:ok, %Todo{} = todo} <- Todos.update_todo(todo, todo_params) do

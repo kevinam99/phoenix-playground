@@ -5,7 +5,7 @@ defmodule TodosApiWeb.DeleteTodo do
 
   action_fallback TodosApiWeb.FallbackController
 
-  def index(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}) do
     todo = Todos.get_todo!(id)
 
     with {:ok, %Todo{}} <- Todos.delete_todo(todo) do

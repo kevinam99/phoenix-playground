@@ -7,7 +7,7 @@ defmodule TodosApiWeb.AddTodo do
 
   action_fallback TodosApiWeb.FallbackController
 
-  def index(conn, %{"todo" => todo_params}) do
+  def create(conn, %{"todo" => todo_params}) do
     IO.puts("Hello from POST /api/addTodo")
 
     with {:ok, %Todo{} = todo} <- Todos.create_todo(todo_params) do
